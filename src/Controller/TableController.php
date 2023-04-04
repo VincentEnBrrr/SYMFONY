@@ -26,24 +26,16 @@ class TableController extends AbstractController
 
 
 
-    #[Route('/table/select', name: 'table_print')]
+    #[Route('/table/select')]
     public function select(Request $req) {
 
         $form = $this->createForm(TableChoiceType::class);
         $form->handleRequest($req);
 if ($form->isSubmitted()) {
 
-            $data = $form->getData();
-            $ret['table_number'] = $data['table_number'];
-            $valeursCalculees = [];
-            for ($i = 1; $i <= 10; $i++) {
-                $valeursCalculees[] = $ret['table_number'] * $i;
-            }
-
-            return $this->render('table/print.html.twig', [
-                'nombre' => $ret['table_number'],
-                'valeursCalculees' => $valeursCalculees,
-            ]);
+    $data = $form->getData();
+    $ret['nombre'] = $data['table_number'];
+    $response = $this->redirectToRoute('table_print',$ret);        
 
         }else {
 
