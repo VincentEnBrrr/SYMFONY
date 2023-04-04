@@ -1,0 +1,17 @@
+<h1>Table de {{ nombre }}</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Multiplication</th>
+      <th>Resultat</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for i in 1..10 %}
+      <tr>
+        <td>{{ nombre }} x {{ i }}</td>
+        <td>{{ valeursCalculees[i-1] }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
